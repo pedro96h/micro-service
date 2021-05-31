@@ -17,12 +17,12 @@ import com.example.hroauth.services.UserService;
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserResource {
-	
+
 	@Autowired
 	private UserService userService;
 
 	@GetMapping(value = "/search")
-	public ResponseEntity<User> findByEmail(@RequestParam String email){
+	public ResponseEntity<User> findByEmail(@RequestParam String email) {
 		try {
 			User user = userService.findByEmail(email);
 			return ResponseEntity.ok().body(user);
@@ -30,6 +30,5 @@ public class UserResource {
 			return ResponseEntity.notFound().build();
 //			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		
 	}
 }
